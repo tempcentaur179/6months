@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Sofia ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2b0000, #8b0000, #ff1e1e);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+nav a {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+}
+
+#contador {
+    margin-top: 10px;
+    color: #ffcccc;
+}
+
+/* BOTÕES */
+button {
+    margin-top: 25px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #8b0000;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* GALERIA */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.galeria img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* FADE */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* SURPRESA */
+#surpresa {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.caixa {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    text-align: center;
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {transform: scale(0.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#sobre">Nós</a>
+    <a href="#cinema">Nosso Dia</a>
+    <a href="#momentos">Momentos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#final">Final</a>
+</nav>
+
+<div class="hero">
+    <h1>Sofia ❤️</h1>
+    <p>Meu grudinhu…</p>
+    <div id="contador"></div>
+    <button onclick="scrollToSection()">Começar</button>
+</div>
+
+<section id="sobre" class="fade">
+    <div class="container">
+        <h2>Nós</h2>
+        <p>
+        A gente se conheceu de um jeito tão simples…<br><br>
+        Você mudou tudo.<br><br>
+        Eu amo como você me ama ❤️
+        </p>
+    </div>
+</section>
+
+<section id="cinema" class="fade">
+    <div class="container">
+        <h2>Nosso Primeiro Cinema 🎬</h2>
+        <div class="galeria">
+            <img src="cinema1.jpg">
+            <img src="cinema2.jpg">
+        </div>
+    </div>
+</section>
+
+<section id="momentos" class="fade">
+    <div class="container">
+        <h2>Coisas que só a gente tem</h2>
+        <p>
+        Nosso jeito é estranho… mas é nosso kkkkk<br>
+        "ti cochilledo" 💙
+        </p>
+    </div>
+</section>
+
+<section id="galeria" class="fade">
+    <div class="container">
+        <h2>Nossa Galeria 📸</h2>
+        <div class="galeria">
+            <img src="foto1.jpg">
+            <img src="foto2.jpg">
+            <img src="foto3.jpg">
+            <img src="foto4.jpg">
+            <img src="foto5.jpg">
+            <img src="foto6.jpg">
+        </div>
+    </div>
+</section>
+
+<section id="final" class="fade">
+    <div class="container">
+        <h2>Pra Sempre</h2>
+        <p>
+        Você é meu primeiro amor…<br>
+        e eu quero que seja o último também.<br><br>
+        Eu te amo, meu grudinhu ❤️
+        </p>
+
+        <button onclick="abrirSurpresa()">Clique aqui 💌</button>
+    </div>
+</section>
+
+<!-- SURPRESA -->
+<div id="surpresa">
+    <div class="caixa">
+        <h2>💌 Pra você</h2>
+        <p>
+        Você é o amor da minha vida.<br><br>
+        Eu faria tudo isso mil vezes só pra te ver feliz.<br><br>
+        Eu te amo, Sofia ❤️
+        </p>
+        <button onclick="fecharSurpresa()">Fechar</button>
+    </div>
+</div>
+
+<!-- MÚSICA -->
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function scrollToSection() {
+    document.getElementById("sobre").scrollIntoView({behavior: "smooth"});
+}
+
+function abrirSurpresa() {
+    document.getElementById("surpresa").style.display = "flex";
+}
+
+function fecharSurpresa() {
+    document.getElementById("surpresa").style.display = "none";
+}
+
+/* animação */
+const faders = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+    faders.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
+
+/* contador */
+const inicio = new Date("2023-09-19");
+
+function atualizarContador() {
+    const agora = new Date();
+    const diff = agora - inicio;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("contador").innerText = dias + " dias juntos ❤️";
+}
+
+setInterval(atualizarContador, 1000);
+
+/* TOCAR MÚSICA NO PRIMEIRO CLIQUE */
+document.addEventListener("click", function() {
+    const musica = document.getElementById("musica");
+    musica.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
